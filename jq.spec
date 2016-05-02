@@ -11,12 +11,16 @@ Name:		jq
 Version:	1.5
 Release:	1
 License:	MIT and ASL 2.0 and CC-BY and GPLv3
+Group:		Applications/Text
 Source0:	https://github.com/stedolan/jq/releases/download/%{name}-%{version}/jq-%{version}.tar.gz
 # Source0-md5:	0933532b086bd8b6a41c1b162b1731f9
-Group:		Applications/Text
+Patch0:		static.patch
 URL:		https://stedolan.github.io/jq/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	libtool
 BuildRequires:	oniguruma-devel
 %if %{with tests}
 BuildRequires:	valgrind
@@ -52,11 +56,17 @@ Requires:	%{name}-libs = %{version}-%{release}
 Development files for %{name}
 
 %prep
-%setup -qn %{name}-%{version}
+%setup -q
+%patch0 -p1
 
 %build
+%{__aclocal} -I config/m4
+%{__libtoolize}
+%{__autoconf}
+%{__automake}
 %configure \
 	--disable-static \
+	--disable-all-static \
 	--disable-silent-rules
 
 %{__make}
