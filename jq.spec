@@ -60,8 +60,8 @@ Development files for %{name}
 %patch0 -p1
 
 %build
-%{__aclocal} -I config/m4
 %{__libtoolize}
+%{__aclocal} -I config/m4
 %{__autoconf}
 %{__automake}
 %configure \
