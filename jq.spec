@@ -65,6 +65,7 @@ Development files for %{name}
 %{__autoconf}
 %{__automake}
 %configure \
+	--disable-docs \
 	--disable-static \
 	--disable-all-static \
 	--disable-silent-rules
