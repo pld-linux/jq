@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_without	static_libs	# static library
 %bcond_without	tests		# check target
+%bcond_with	tests_valgrind	# use valgrind for tests (suspectible to glibc false positives)
 
 %ifnarch %{ix86} %{x8664}
 # valgrind required
@@ -12,7 +13,7 @@ Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
 Version:	1.5
-Release:	2
+Release:	3
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/stedolan/jq/releases
@@ -26,7 +27,7 @@ BuildRequires:	bison >= 3
 BuildRequires:	flex
 BuildRequires:	libtool >= 2:2
 BuildRequires:	oniguruma-devel
-%if %{with tests}
+%if %{with tests_valgrind}
 BuildRequires:	valgrind
 %endif
 Requires:	%{name}-libs = %{version}-%{release}
@@ -99,13 +100,14 @@ Statyczna biblioteka jq.
 	--disable-docs \
 	%{!?with_static_libs:--disable-static} \
 	--disable-all-static \
-	--disable-silent-rules
+	--disable-silent-rules \
+	%{!?with_tests_valgrind:--disable-valgrind}
 
 %{__make}
 
 # Docs already shipped in jq's tarball.
 # In order to build the manual page, it
-# is necessary to install rake, rubygem-ronn
+# is necessary to install rake, rubygem-ronn, bonsai
 # and do the following steps:
 #
 # # yum install rake rubygem-ronn
