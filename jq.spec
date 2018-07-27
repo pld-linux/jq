@@ -13,7 +13,7 @@ Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
 Version:	1.5
-Release:	3
+Release:	4
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/stedolan/jq/releases
@@ -102,6 +102,8 @@ Statyczna biblioteka jq.
 	--disable-all-static \
 	--disable-silent-rules \
 	%{!?with_tests_valgrind:--disable-valgrind}
+
+echo -e '#!/bin/sh\necho "'%{version}'"' > scripts/version
 
 %{__make}
 
