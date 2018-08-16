@@ -13,7 +13,7 @@ Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
 Version:	1.5
-Release:	4
+Release:	5
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/stedolan/jq/releases
