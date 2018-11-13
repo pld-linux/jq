@@ -3,9 +3,9 @@
 @@ -84,7 +84,7 @@
  
  bin_PROGRAMS = jq
- jq_SOURCES = main.c version.h
+ jq_SOURCES = src/main.c src/version.h
 -jq_LDFLAGS = -static-libtool-libs
 +jq_LDFLAGS =
  jq_LDADD = libjq.la -lm
  
- if ENABLE_ALL_STATIC
+ if WIN32

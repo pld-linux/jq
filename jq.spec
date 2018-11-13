@@ -12,13 +12,13 @@
 Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
-Version:	1.5
-Release:	5
+Version:	1.6
+Release:	1
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/stedolan/jq/releases
 Source0:	https://github.com/stedolan/jq/releases/download/%{name}-%{version}/jq-%{version}.tar.gz
-# Source0-md5:	0933532b086bd8b6a41c1b162b1731f9
+# Source0-md5:	f5f70ad5dc46d95e0128dc94c25c4d5d
 Patch0:		static.patch
 URL:		https://stedolan.github.io/jq/
 BuildRequires:	autoconf >= 2.64
