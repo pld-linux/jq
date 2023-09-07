@@ -12,16 +12,16 @@
 Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
-Version:	1.6
+Version:	1.7
 Release:	1
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/jqlang/jq/releases
 Source0:	https://github.com/jqlang/jq/releases/download/%{name}-%{version}/jq-%{version}.tar.gz
-# Source0-md5:	f5f70ad5dc46d95e0128dc94c25c4d5d
+# Source0-md5:	4662fd45f0b5622382fc85c1249739d5
 Patch0:		static.patch
 URL:		https://jqlang.github.io/jq/
-BuildRequires:	autoconf >= 2.64
+BuildRequires:	autoconf >= 2.65
 BuildRequires:	automake >= 1:1.11.2
 BuildRequires:	bison >= 3
 BuildRequires:	flex
@@ -93,7 +93,7 @@ Statyczna biblioteka jq.
 
 %build
 %{__libtoolize}
-%{__aclocal} -I config/m4
+%{__aclocal} -I m4 -I config/m4
 %{__autoconf}
 %{__automake}
 %configure \
@@ -141,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README README.md AUTHORS COPYING
+%doc AUTHORS COPYING NEWS.md README.md
 %attr(755,root,root) %{_bindir}/jq
 %{_mandir}/man1/jq.1*
 
@@ -155,6 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libjq.so
 %{_includedir}/jq.h
 %{_includedir}/jv.h
+%{_pkgconfigdir}/libjq.pc
 
 %if %{with static_libs}
 %files static
