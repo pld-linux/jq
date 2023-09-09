@@ -20,6 +20,7 @@ Group:		Applications/Text
 Source0:	https://github.com/jqlang/jq/releases/download/%{name}-%{version}/jq-%{version}.tar.gz
 # Source0-md5:	4662fd45f0b5622382fc85c1249739d5
 Patch0:		static.patch
+Patch1:		tests-no-pty.patch
 URL:		https://jqlang.github.io/jq/
 BuildRequires:	autoconf >= 2.65
 BuildRequires:	automake >= 1:1.11.2
@@ -90,6 +91,7 @@ Statyczna biblioteka jq.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}

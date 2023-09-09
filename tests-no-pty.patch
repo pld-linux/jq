@@ -1,0 +1,11 @@
+--- jq-1.7/tests/shtest.orig	2023-09-06 22:00:31.000000000 +0200
++++ jq-1.7/tests/shtest	2023-09-09 14:40:45.573460403 +0200
+@@ -503,7 +503,7 @@
+ cmp $d/warning $d/expect_warning
+ 
+ # Check $NO_COLOR
+-test_no_color=true
++test_no_color=false
+ $msys  && test_no_color=false
+ $mingw && test_no_color=false
+ if $test_no_color && command -v script >/dev/null 2>&1; then
