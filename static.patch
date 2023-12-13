@@ -8,4 +8,4 @@
 +jq_LDFLAGS =
  jq_LDADD = libjq.la -lm
  
- if WIN32
+ if ENABLE_ALL_STATIC
