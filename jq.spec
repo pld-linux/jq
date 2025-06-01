@@ -12,15 +12,14 @@
 Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
-Version:	1.7.1
+Version:	1.8.0
 Release:	1
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/jqlang/jq/releases
 Source0:	https://github.com/jqlang/jq/releases/download/%{name}-%{version}/jq-%{version}.tar.gz
-# Source0-md5:	974a340105ecb43add8c55601525f9fc
-Patch0:		static.patch
-Patch1:		tests-no-pty.patch
+# Source0-md5:	46856841b9fd765b852023b881cd2e8b
+Patch0:		tests-no-pty.patch
 URL:		https://jqlang.github.io/jq/
 BuildRequires:	autoconf >= 2.65
 BuildRequires:	automake >= 1:1.11.2
@@ -28,9 +27,8 @@ BuildRequires:	bison >= 3
 BuildRequires:	flex
 BuildRequires:	libtool >= 2:2
 BuildRequires:	oniguruma-devel
-%if %{with tests_valgrind}
-BuildRequires:	valgrind
-%endif
+BuildRequires:	rpmbuild(macros) >= 1.527
+%{?with_tests_valgrind:BuildRequires:	valgrind}
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -91,7 +89,6 @@ Statyczna biblioteka jq.
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p1
 
 %build
 %{__libtoolize}
@@ -103,7 +100,7 @@ Statyczna biblioteka jq.
 	%{!?with_static_libs:--disable-static} \
 	--disable-all-static \
 	--disable-silent-rules \
-	%{!?with_tests_valgrind:--disable-valgrind}
+	%{__enable_disable tests_valgrind valgrind}
 
 echo -e '#!/bin/sh\necho "'%{version}'"' > scripts/version
 
