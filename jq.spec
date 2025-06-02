@@ -8,7 +8,7 @@ Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
 Version:	1.8.0
-Release:	1
+Release:	2
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/jqlang/jq/releases
@@ -16,7 +16,8 @@ Source0:	https://github.com/jqlang/jq/releases/download/%{name}-%{version}/jq-%{
 # Source0-md5:	46856841b9fd765b852023b881cd2e8b
 Patch0:		tests-no-pty.patch
 URL:		https://jqlang.github.io/jq/
-BuildRequires:	autoconf >= 2.65
+# for --enable-year2038
+BuildRequires:	autoconf >= 2.72
 BuildRequires:	automake >= 1:1.11.2
 BuildRequires:	bison >= 3
 BuildRequires:	flex
@@ -95,6 +96,7 @@ Statyczna biblioteka jq.
 	%{!?with_static_libs:--disable-static} \
 	--disable-all-static \
 	--disable-silent-rules \
+	--enable-year2038 \
 	%{__enable_disable tests_valgrind valgrind}
 
 echo -e '#!/bin/sh\necho "'%{version}'"' > scripts/version
