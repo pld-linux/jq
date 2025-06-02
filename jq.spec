@@ -4,11 +4,6 @@
 %bcond_without	tests		# check target
 %bcond_with	tests_valgrind	# use valgrind for tests (suspectible to glibc false positives)
 
-%ifnarch %{ix86} %{x8664}
-# valgrind required
-%undefine	with_tests
-%endif
-
 Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
