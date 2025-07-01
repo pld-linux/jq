@@ -7,13 +7,13 @@
 Summary:	Command-line JSON processor
 Summary(pl.UTF-8):	Procesor JSON działający z linii poleceń
 Name:		jq
-Version:	1.8.0
-Release:	2
+Version:	1.8.1
+Release:	1
 License:	MIT, Apache, CC-BY, GPL v3
 Group:		Applications/Text
 #Source0Download: https://github.com/jqlang/jq/releases
 Source0:	https://github.com/jqlang/jq/releases/download/%{name}-%{version}/jq-%{version}.tar.gz
-# Source0-md5:	46856841b9fd765b852023b881cd2e8b
+# Source0-md5:	ea4bb241cd9c625b43b0988776db1e03
 Patch0:		tests-no-pty.patch
 URL:		https://jqlang.github.io/jq/
 # for --enable-year2038
