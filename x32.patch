@@ -1,0 +1,8 @@
+--- jq-1.8.2/src/builtin.c.orig	2026-06-20 15:36:30.000000000 +0200
++++ jq-1.8.2/src/builtin.c	2026-06-20 22:22:17.858914468 +0200
+@@ -1,4 +1,4 @@
+-#if __SIZEOF_POINTER__==4
++#if __SIZEOF_POINTER__==4 && !defined(__x86_64__)
+ # define _TIME_BITS 64
+ #endif
+ #ifndef __sun__
